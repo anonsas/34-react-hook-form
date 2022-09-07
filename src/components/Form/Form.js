@@ -15,6 +15,21 @@ const schema = yup.object().shape({
 });
 
 function Form() {
+  // register - function, which determines which fields we want to be part of our validation.
+  // handleSubmit - like formSubmitHandler.
+  // errors - object, containing all the errors. We don't need to grab errors individually.
+  // It will grab the errors, which are displayed by yup (schema). And would be stored in the errors object.
+
+  //-----------------------------------------------------
+  // yup connection to react-hook-form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   return (
     <div>
       <h3>Sign Up</h3>
